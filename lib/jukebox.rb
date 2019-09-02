@@ -23,7 +23,24 @@ def list(songs)
 end
 
 def play(songs)
-  puts "Please enter a song name ot number: "
+  puts "Please enter a song name or number: "
   input = gets.strip
-  if (1..songs.length).include?(input) ||
+
+  songs_list = {}
+  songs.each_with_index { |song, idx| songs_list[idx+1] = song }
+
+  if input.numeric?
+    song_number = input.to_i
+    if (1..songs.length).include?(song_number)
+      puts "Playing #{songs_list[song_number]}"
+    else
+      puts "Invalid input, please try again"
+    end
+  else
+    if songs.include?(input)
+      puts "Playing #{input}"
+    else
+      puts "Invalid input, please try again"
+    end
+  end
 end
