@@ -1,3 +1,10 @@
+#to check if a string is a numeric or not
+class String
+  def numeric?
+    Float(self) != nil rescue false
+  end
+end
+
 songs = [
   "Phoenix - 1901",
   "Tokyo Police Club - Wait Up",
